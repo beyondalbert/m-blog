@@ -1,10 +1,36 @@
 <%- include layout/header %>
-<% posts.forEach(function (post, index) { %>
-  <p><h2><a href="/posts/show/<%= post._id %>"><%= post.title %></a></h2></p>
-  <p class="info">
-    作者：<a href="/users/<%= post.author %>"><%= post.author %></a> | 
-    日期：<%= post.time.minute %>
-  </p>
-  <p><%- post.content %></p>
-<% }) %>
+
+<div class="row">
+  <div class="col-md-8">
+    <h1 class="page-header">
+      首页
+      <small>Secondary Text</small>
+    </h1>
+
+    <% posts.forEach(function (post, index) { %>
+      <h2>
+        <a href="/posts/show/<%= post._id %>"><%= post.title %></a>
+      </h2>
+      <p><span class="glyphicon glyphicon-time"></span>
+        日期：<%= post.time.minute %>
+      </p>
+      <hr>
+      <p><%- post.content %></p>
+      <a class="btn btn-primary" href="/posts/show/<%= post._id %>">阅读全文<span class="glyphicon glyphicon-chevron-right"></span></a>
+
+      <hr>
+    <% }) %>
+    <ul class="pager">
+        <li class="previous">
+            <a href="#">&larr; Older</a>
+        </li>
+        <li class="next">
+            <a href="#">Newer &rarr;</a>
+        </li>
+    </ul>
+
+  </div>
+
+  <%- include layout/side_bar %>
+</div>
 <%- include layout/footer %>

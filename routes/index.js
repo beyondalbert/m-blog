@@ -16,6 +16,7 @@ router.get('/', function(req, res) {
         post.content = markdown.toHTML(post.content);
       }
     });
+    console.log(req.session.user);
     res.render('index', {
       title: '主页',
       user: req.session.user,
